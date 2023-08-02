@@ -13,12 +13,12 @@ long obtenerTiempo();
 int main()
 {
   int intentos = 15;
-  vector<int> A = datos("Datos//10000.csv");
+  vector<int> A = datos("..//Data//4000.csv");
   int Asize = A.size();
 
 
 // BURBUJA
-  cout << "Bubble Sort 15 times size 100" << endl;
+  cout << "Bubble Sort 15 times size 70000" << endl;
   cout<<"Result: [ ";
   for (int i = 0; i < intentos; i++)
   {
@@ -35,7 +35,7 @@ int main()
   cout<<endl;
 
 // TREE SORT
-  cout << "Tree Sort 15 times size 100" << endl;
+  cout << "Tree Sort 15 times size 30000" << endl;
   cout<<"Result: [ ";
   for (int i = 0; i < intentos; i++)
   {
@@ -52,7 +52,7 @@ int main()
   cout<<endl;
 
 //MERGE SORT
-  cout << "Merge Sort 15 times size 100" << endl;
+  cout << "Merge Sort 15 times size 30000" << endl;
   cout<<"Result: [ ";
   for (int i = 0; i < intentos; i++)
   {

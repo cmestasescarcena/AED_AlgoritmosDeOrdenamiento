@@ -1,86 +1,70 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <vector>
+
 using namespace std;
- 
-// Merges two subarrays of array[].
-// First subarray is arr[begin..mid]
-// Second subarray is arr[mid+1..end]
-void merge(vector<int> array, int const left, int const mid,
-           int const right)
+
+void merge(vector<int>&arreglo, int inicio, int mitad, int final)
 {
-    int const subArrayOne = mid - left + 1;
-    int const subArrayTwo = right - mid;
- 
-    // Create temp arrays
-    auto *leftArray = new int[subArrayOne],
-         *rightArray = new int[subArrayTwo];
- 
-    // Copy data to temp arrays leftArray[] and rightArray[]
-    for (auto i = 0; i < subArrayOne; i++)
-        leftArray[i] = array[left + i];
-    for (auto j = 0; j < subArrayTwo; j++)
-        rightArray[j] = array[mid + 1 + j];
- 
-    auto indexOfSubArrayOne = 0, indexOfSubArrayTwo = 0;
-    int indexOfMergedArray = left;
- 
-    // Merge the temp arrays back into array[left..right]
-    while (indexOfSubArrayOne < subArrayOne
-           && indexOfSubArrayTwo < subArrayTwo) {
-        if (leftArray[indexOfSubArrayOne]
-            <= rightArray[indexOfSubArrayTwo]) {
-            array[indexOfMergedArray]
-                = leftArray[indexOfSubArrayOne];
-            indexOfSubArrayOne++;
-        }
-        else {
-            array[indexOfMergedArray]
-                = rightArray[indexOfSubArrayTwo];
-            indexOfSubArrayTwo++;
-        }
-        indexOfMergedArray++;
+  int i, j, k;
+  int elementosIzq = mitad - inicio + 1;
+  int elementosDer = final - mitad;
+
+  vector<int>izquierda(elementosIzq);
+  vector<int>derecha(elementosDer);
+
+  for(int i=0; i<elementosIzq; i++)
+  {
+    izquierda[i] = arreglo[inicio+i];
+  }
+
+    for(int j=0; j<elementosDer; j++)
+  {
+    derecha[j] = arreglo[mitad + 1 + j];
+  }
+
+  i = 0;
+  j = 0;
+  k = inicio;
+
+  while(i < elementosIzq && j < elementosDer)
+  {
+    if(izquierda[i] <= derecha[j])
+    {
+      arreglo[k] = izquierda[i];
+      i++;
     }
- 
-    // Copy the remaining elements of
-    // left[], if there are any
-    while (indexOfSubArrayOne < subArrayOne) {
-        array[indexOfMergedArray]
-            = leftArray[indexOfSubArrayOne];
-        indexOfSubArrayOne++;
-        indexOfMergedArray++;
+    else
+    {
+      arreglo[k] = derecha[j];
+      j++;
     }
- 
-    // Copy the remaining elements of
-    // right[], if there are any
-    while (indexOfSubArrayTwo < subArrayTwo) {
-        array[indexOfMergedArray]
-            = rightArray[indexOfSubArrayTwo];
-        indexOfSubArrayTwo++;
-        indexOfMergedArray++;
-    }
-    delete[] leftArray;
-    delete[] rightArray;
-}
- 
-// begin is for left index and end is right index
-// of the sub-array of arr to be sorted
-void mergeSort( vector<int> array, int const begin, int const end)
-{
-    if (begin >= end)
-        return;
- 
-    int mid = begin + (end - begin) / 2;
-    mergeSort(array, begin, mid);
-    mergeSort(array, mid + 1, end);
-    merge(array, begin, mid, end);
+    k++;
+  }
+
+  while (j < elementosDer)
+  {
+    arreglo[k] = derecha[j];
+    j++;
+    k++;
+  }
+
+  while (i < elementosDer)
+  {
+    arreglo[k] = izquierda[i];
+    i++;
+    k++;
+  }
+
 }
 
-// UTILITY FUNCTIONS
-// Function to print an array
-void printArray(vector<int> A)
+vector<int> mergeSort(vector<int>&arreglo, int inicio, int final)
 {
-    for (int i = 0; i < 100; i++)
-        cout << A[i] << " ";
-    cout << endl;
+  if(inicio < final)
+  {
+    int mitad = inicio + (final-inicio)/2;
+    mergeSort(arreglo, inicio, mitad); //divide parte izquierda
+    mergeSort(arreglo, mitad+1, final); //divide parte derecha
+    merge(arreglo, inicio, mitad, final);
+  }
+  return(arreglo);
 }
-
