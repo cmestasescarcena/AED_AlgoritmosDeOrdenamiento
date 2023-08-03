@@ -1,46 +1,25 @@
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
-#include <fstream>
-#include <sstream>
-#include <vector>
+// Optimized implementation of Bubble sort
+#include <bits/stdc++.h>
 using namespace std;
-
-// Extracción de datos
-vector<int> datos(string name)
+  
+// An optimized version of Bubble Sort
+void bubbleSort(int arr[], int n)
 {
-  ifstream archivo(name);
-  vector<int> vect;
-  string linea;
-  int dato;
-  char delimitador = ',';
-
-  while (getline(archivo, linea))
-  {
-    stringstream stream(linea);
-    string tempInt;
-    getline(stream, tempInt, delimitador);
-    dato = stoi(tempInt);
-    vect.push_back(dato);
-  }
-return (vect);
-}// Fin extracción
-
-//Burbuja
-vector<int> burbuja(vector<int> v)
-{
-  int i, j, aux;
-  for (i=0; i<v.size(); i++)
-  {
-    for (j=0; j<v.size()-1; j++)
-    {
-      if (v[j] > v[j+1])
-      {
-        aux = v[j];
-        v[j] = v[j+1];
-        v[j+1] = aux;
-      }
+    int i, j;
+    bool swapped;
+    for (i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+  
+        // If no two elements were swapped
+        // by inner loop, then break
+        if (swapped == false)
+            break;
     }
-  }
-  return(v);
-}// Fin burbuja
+}
+  
