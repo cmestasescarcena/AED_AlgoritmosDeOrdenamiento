@@ -1,3 +1,12 @@
+import pandas as pd
+import numpy as np
+import time
+
+inicio = time.time()
+
+data = pd.read_csv("../Data/100.csv", header=None)
+array = data[0].to_numpy()
+
 def bubbleSort(array):
     n = len(array)
     swapped = False

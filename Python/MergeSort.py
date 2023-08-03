@@ -4,7 +4,7 @@ import time
 
 inicio = time.time()
 
-data = pd.read_csv("D:\\TAREA01\\AED_AlgoritmosDeOrdenamiento\\Data\\100.csv", header=None)
+data = pd.read_csv("../Data/100.csv", header=None)
 array = data[0].to_numpy()
 
 #MERGE SORT
@@ -51,10 +51,7 @@ def merge(array, l, m, r):
         j += 1
         k += 1
  
-# l is for left index and r is right index of the
-# sub-array of arr to be sorted
- 
- 
+
 def mergeSort(array, l, r):
     if l < r:
  
