@@ -66,6 +66,81 @@ def prom(array): #Funcion de promedio
         promTimes.append(promT)
     return promTimes
 
-bubble = prom(dataBubble)
-plt.plot(size, bubble)
+def devStand(array):
+    row = len(array)
+    promTimes = []
+    devStd = []
+    for i in range(row):
+        promTimes.append(array[i])
+        return (promTimes)
+    for j in range(row):
+        devStd.append(np.std(promTimes))
+    return(devStd)
+
+print("**PROMEDIO Y DESVIACION ESTANDAR DE BUBBLE SORT**")
+bubbleprom = prom(dataBubble)
+bubbleStd = devStand(dataBubble)
+print("Promedio")
+print(bubbleprom)
+print("Desviacion estandar")
+print(bubbleStd, "\n")
+
+print("**PROMEDIO Y DESVIACION ESTANDAR DE TREE SORT**")
+treeprom = prom(dataTree)
+treeStd = devStand(dataTree)
+print("Promedio")
+print(treeprom)
+print("Desviacion estandar")
+print(treeStd, "\n")
+
+print("**PROMEDIO Y DESVIACION ESTANDAR DE MERGE SORT**")
+mergeprom = prom(dataMerge)
+mergeStd = devStand(dataMerge)
+print("Promedio")
+print(mergeprom)
+print("Desviacion estandar")
+print(mergeStd, "\n")
+
+##*****************************************************************##
+
+fig, ax = plt.subplots()
+size         = ['100', '1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000', '20000', '30000', '40000', '50000']
+
+allTimes     = {'Bubble Sort':bubbleprom, 'Tree Sort': treeprom, 'Merge Sort': mergeprom}
+
+ax.plot(size, allTimes['Bubble Sort'], label = 'Bubble Sort')
+ax.plot(size, allTimes['Tree Sort'], label = 'Tree Sort')
+ax.plot(size, allTimes['Merge Sort'], label = 'Merge Sort')
+ax.legend(loc = 'upper left')
+plt.xlabel('Cantidad de elementos')
+plt.setp(ax.get_xticklabels(), rotation=30, ha='right')
+plt.ylabel('Tiempo')
+plt.title('Comparativa algoritmos')
+
 plt.show()
+
+##**********************************************************************##
+
+dataNqueens = [
+[ 3e-06, 1e-06, 1e-06, 0, 1e-06, 0, 1e-06, 0, 1e-06, 0, 1e-06, 1e-06, 0, 0, 1e-06, ],
+[ 6e-06, 3e-06, 2e-06, 2e-06, 2e-06, 2e-06, 1e-06, 1e-06, 1e-06, 2e-06, 2e-06, 2e-06, 1e-06, 1e-06, 2e-06, ],
+[ 2e-05, 1.2e-05, 9e-06, 8e-06, 7e-06, 8e-06, 7e-06, 7e-06, 8e-06, 7e-06, 7e-06, 7e-06, 6e-06, 6e-06, 7e-06, ],
+[ 8.4e-05, 6.5e-05, 5.9e-05, 5.6e-05, 5.5e-05, 5.3e-05, 5.1e-05, 5.7e-05, 4.9e-05, 4.8e-05, 4.8e-05, 4.8e-05, 4.8e-05, 4.7e-05, 4.7e-05, ],
+[ 0.00034, 0.00033, 0.000325, 0.000326, 0.000319, 0.000321, 0.000327, 0.000322, 0.000325, 0.000325, 0.000327, 0.000317, 0.000321, 0.000313, 0.000314, ],
+[ 0.001616, 0.001597, 0.001621, 0.001599, 0.001595, 0.001653, 0.001652, 0.001611, 0.001615, 0.001614, 0.001598, 0.001597, 0.001578, 0.001595, 0.001582, ],
+[ 0.007723, 0.007444, 0.008257, 0.008376, 0.008617, 0.007746, 0.00832, 0.00835, 0.007751, 0.007743, 0.007621, 0.007556, 0.007522, 0.007406, 0.007537, ],
+[ 0.013078, 0.012999, 0.013038, 0.012929, 0.012955, 0.012965, 0.013657, 0.013412, 0.013054, 0.012817, 0.013358, 0.013212, 0.012661, 0.012818, 0.013167, ],
+[ 0.024489, 0.024795, 0.023339, 0.023369, 0.023199, 0.023446, 0.023061, 0.023401, 0.023115, 0.025401, 0.023405, 0.023999, 0.025215, 0.024489, 0.023642, ],
+[ 0.042427, 0.043412, 0.043181, 0.04264, 0.042543, 0.043237, 0.043245, 0.042709, 0.042495, 0.042515, 0.044776, 0.042657, 0.042681, 0.042975, 0.042213, ],
+[ 0.082082, 0.078824, 0.080888, 0.081665, 0.08302, 0.080882, 0.07981, 0.082203, 0.083493, 0.081663, 0.081952, 0.082603, 0.081184, 0.079901, 0.078861, ],
+[ 0.153055, 0.151707, 0.157817, 0.15358, 0.150178, 0.148918, 0.14735, 0.149087, 0.14809, 0.147541, 0.148683, 0.153657, 0.14891, 0.149248, 0.148315, ]
+]
+
+print("**PROMEDIO Y DESVIACION ESTANDAR DE N QUEENS**")
+Nqueenprom = prom(dataNqueens)
+NqueenStd = devStand(dataNqueens)
+print("Promedio")
+print(Nqueenprom)
+print("Desviacion estandar")
+print(NqueenStd, "\n")
+

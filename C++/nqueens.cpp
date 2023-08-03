@@ -13,29 +13,36 @@ int main()
 {
   ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    cout << "N queens times: " << endl;
-    cout<<"Result: [ ";
-    for(int n=4; n<16; n++){
 
-    long inicio = obtenerTiempo();
-    double tiempoEnSegundos;
-    long tiempoEnMicrosegundos;
+    for (int n = 4; n < 16; n++)
+    {
+      int i = 0;
+      cout << "N queens = " <<n<<endl;
+      cout << "Result: [ ";
+      while (i < 15)
+      {
+        long inicio = obtenerTiempo();
+        double tiempoEnSegundos;
+        long tiempoEnMicrosegundos;
 
-              for (int i = 0;i < n;i++) {
-            for (int j = 0;j < n;j++) {
-                grid[i][j] = 0;
-            }
+        for (int i = 0; i < n; i++)
+        {
+          for (int j = 0; j < n; j++)
+          {
+            grid[i][j] = 0;
+          }
         }
         bool res = solve(n, 0);
 
-    long final = obtenerTiempo();
-    tiempoEnMicrosegundos = final - inicio;
-    tiempoEnSegundos = tiempoEnMicrosegundos * pow(10, -6);
-    cout<<tiempoEnSegundos<<" ";
+        long final = obtenerTiempo();
+        tiempoEnMicrosegundos = final - inicio;
+        tiempoEnSegundos = tiempoEnMicrosegundos * pow(10, -6);
+        cout << tiempoEnSegundos << ", ";
 
+        i++;
+      }
+      cout<<"]"<<endl;
     }
-    cout<<"]"<<endl;
 
   return 0;
 }

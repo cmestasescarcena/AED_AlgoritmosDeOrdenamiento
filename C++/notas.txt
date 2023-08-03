@@ -2,3 +2,38 @@ git pull
 git add .
 git commit -m "mensaje de cambios"
 git push
+
+ubbleSort 15 times size 2000
+        Result: [1.5676 1.0042 1.0052 1.504 1.5026 1.0015 2.5059 2.0016 2.3306 2.0079 1.9984 1.5059 1.9998 1.0003 1.0027]
+        Average: 
+        Standard Deviation: 
+TreeSort 15 times size 2000
+        Result: [0 0.9995 0 0 0 0 0 0 0.9989 0 0.9989 0 1.505 0 1.0055]
+        Average: 
+        Standard Deviation: 
+MergeSort 15 times size 2000
+        Result: [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+        Average: 
+        Standard Deviation: 
+
+
+
+
+
+
+
+
+
+BubbleSort 15 times size 50000
+        Result: [2637.533 2640.6324 2592.3694 2612.4975 2607.9001 2589.4091 2599.4375 2594.5233 2600.3994 2599.4536 2591.3503 2608.3493 2608.1833 2595.3862 2603.4346]
+        Average: 
+        Standard Deviation: 
+TreeSort 15 times size 50000
+        Result: [9.0217 10.0222 9.008 8.9065 9.5834 10.6525 8.0083 10.0251 9.512 9.4118 9.5176 9.512 9.0101 9.0131 9.5152]
+        Average: 
+        Standard Deviation: 
+MergeSort 15 times size 50000
+        Result: [11.6805 9.0523 8.5194 10.0492 11.0236 10.0264 9.0145 9.522 9.8478 8.5136 10.018 9.6947 10.0234 10.0177 9.0824]
+        Average: 
+        Standard Deviation: 
+

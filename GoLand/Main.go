@@ -53,7 +53,7 @@ func readFile(_size int) []int64 {
 func average(xs []float64) float64 {
 	total := 0.0
 	for _, v := range xs {
-		total += v
+		total += (v / 1000)
 	}
 	return total / float64(len(xs))
 }
@@ -62,7 +62,7 @@ func standardDeviation(_num []float64) float64 {
 	var mean, sd float64
 	mean = average(_num)
 	for i := 0; i < len(_num); i++ {
-		sd += math.Pow(_num[i]-mean, 2)
+		sd += math.Pow((_num[i]/1000)-mean, 2)
 	}
 	sd = math.Sqrt(sd / float64(len(_num)))
 	return sd
@@ -119,10 +119,10 @@ func sort(_algorithm string, _size int) {
 	}
 	fmt.Print("\n\tResult: ", processingTime)
 	fmt.Print("\n\tAverage: ")
-	fmt.Printf("%.5f", average(processingTime))
+	fmt.Printf("%e", average(processingTime))
 	fmt.Print("\n")
 	fmt.Print("\tStandard Deviation: ")
-	fmt.Printf("%.5f", standardDeviation(processingTime))
+	fmt.Printf("%e", standardDeviation(processingTime))
 	fmt.Print("\n")
 }
 
@@ -150,12 +150,12 @@ func n_queens(_n int) {
 			flag = false
 		}
 	}
-	fmt.Print("\tResult: ", processingTime)
+	fmt.Print("\n\tResult: ", processingTime)
 	fmt.Print("\n\tAverage: ")
-	fmt.Printf("%.5f", average(processingTime))
+	fmt.Printf("%e", average(processingTime))
 	fmt.Print("\n")
 	fmt.Print("\tStandard Deviation: ")
-	fmt.Printf("%.5f", standardDeviation(processingTime))
+	fmt.Printf("%e", standardDeviation(processingTime))
 	fmt.Print("\n")
 }
 
