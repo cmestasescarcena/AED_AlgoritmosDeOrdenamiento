@@ -83,71 +83,87 @@ def mergeSort(arr):
             j += 1
             k += 1
 
-if __name__ == "__main__":
-    intentos = 15
-    A = datos("..//Data//1000.csv")
+data = ["..//Data//100.csv", "..//Data//1000.csv", "..//Data//2000.csv", "..//Data//3000.csv", "..//Data//4000.csv", "..//Data//5000.csv", "..//Data//6000.csv", "..//Data//7000.csv", "..//Data//8000.csv", "..//Data//9000.csv", "..//Data//10000.csv", "..//Data//20000.csv", "..//Data//30000.csv", "..//Data//40000.csv", "..//Data//50000.csv"]
+# Listas para almacenar los tiempos de ejecución de cada algoritmo
+bubble_times = []
+tree_times = []
+merge_times = []
 
-    # Listas para almacenar los tiempos de ejecución de cada algoritmo
-    bubble_times = []
-    tree_times = []
-    merge_times = []
+# BUBBLE SORT
+print("Bubble Sort 15 times")
+print("Result:")
+for i in range(15):
+    if __name__ == "__main__":
+        intentos = 15
+        A = datos(data[i])
+        print("[")
+        for i in range(intentos):
+            start_time = obtenerTiempo()
+            burbuja(A.copy())
+            end_time = obtenerTiempo()
+            elapsed_time = (end_time - start_time) / 1_000_000
+            print(elapsed_time, end=", ")
+            bubble_times.append(elapsed_time)  # Agregar el tiempo a la lista
+        print("]")
+        print()
 
-    # BUBBLE SORT
-    print("Bubble Sort 15 times")
-    print("Result: [", end=" ")
-    for i in range(intentos):
-        start_time = obtenerTiempo()
-        burbuja(A.copy())
-        end_time = obtenerTiempo()
-        elapsed_time = (end_time - start_time) / 1_000_000
-        print(elapsed_time, end=" ")
-        bubble_times.append(elapsed_time)  # Agregar el tiempo a la lista
-    print("]")
-    print()
+# TREE SORT
+print("Tree Sort 15 times")
+print("Result:")
+for i in range(15):
+    if __name__ == "__main__":
+        intentos = 15
+        A = datos(data[i])
+        print("[")
+        print("Tree Sort 15 times")
+        print("Result: [", end=" ")
+        for i in range(intentos):
+            start_time = obtenerTiempo()
+            treeSort(A.copy())
+            end_time = obtenerTiempo()
+            elapsed_time = (end_time - start_time) / 1_000_000
+            print(elapsed_time, end=" ")
+            tree_times.append(elapsed_time)  # Agregar el tiempo a la lista
+        print("]")
+        print()
 
-    # TREE SORT
-    print("Tree Sort 15 times")
-    print("Result: [", end=" ")
-    for i in range(intentos):
-        start_time = obtenerTiempo()
-        treeSort(A.copy())
-        end_time = obtenerTiempo()
-        elapsed_time = (end_time - start_time) / 1_000_000
-        print(elapsed_time, end=" ")
-        tree_times.append(elapsed_time)  # Agregar el tiempo a la lista
-    print("]")
-    print()
+# MERGE SORT
+print("Tree Sort 15 times")
+print("Result:")
+for i in range(15):
+    if __name__ == "__main__":
+        intentos = 15
+        A = datos(data[i])
+        print("[")
+        print("Merge Sort 15 times")
+        print("Result: [", end=" ")
+        for i in range(intentos):
+            start_time = obtenerTiempo()
+            mergeSort(A.copy())
+            end_time = obtenerTiempo()
+            elapsed_time = (end_time - start_time) / 1_000_000
+            print(elapsed_time, end=" ")
+            merge_times.append(elapsed_time)  # Agregar el tiempo a la lista
+        print("]")
+        print()
 
-    # MERGE SORT
-    print("Merge Sort 15 times")
-    print("Result: [", end=" ")
-    for i in range(intentos):
-        start_time = obtenerTiempo()
-        mergeSort(A.copy())
-        end_time = obtenerTiempo()
-        elapsed_time = (end_time - start_time) / 1_000_000
-        print(elapsed_time, end=" ")
-        merge_times.append(elapsed_time)  # Agregar el tiempo a la lista
-    print("]")
-    print()
+# Calcular el promedio y la desviación estándar para cada algoritmo
+def average(xs):
+    return sum(xs) / len(xs)
 
-    # Calcular el promedio y la desviación estándar para cada algoritmo
-    def average(xs):
-        return sum(xs) / len(xs)
+def stand_desv(nums):
+    mean = average(nums)
+    sd = math.sqrt(sum((x - mean) ** 2 for x in nums) / len(nums))
+    return sd
 
-    def stand_desv(nums):
-        mean = average(nums)
-        sd = math.sqrt(sum((x - mean) ** 2 for x in nums) / len(nums))
-        return sd
+print("BubbleSort average:", average(bubble_times))
+print("BubbleSort desv_stan", stand_desv(bubble_times))
+print()
 
-    print("BubbleSort average:", average(bubble_times))
-    print("BubbleSort desv_stan", stand_desv(bubble_times))
-    print()
+print("TreeSort average:", average(tree_times))
+print("TreeSort desv_stan:", stand_desv(tree_times))
+print()
 
-    print("TreeSort average:", average(tree_times))
-    print("TreeSort desv_stan:", stand_desv(tree_times))
-    print()
-
-    print("MergeSort average:", average(merge_times))
-    print("MergeSort desv_stan:", stand_desv(merge_times))
-    print()
+print("MergeSort average:", average(merge_times))
+print("MergeSort desv_stan:", stand_desv(merge_times))
+print()

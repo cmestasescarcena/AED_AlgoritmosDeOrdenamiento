@@ -28,7 +28,7 @@ def printSolution(mat):
 
 def nQueen(mat, r):
     if r == len(mat):
-        printSolution(mat)
+        ##printSolution(mat)
         return
 
     for i in range(len(mat)):
@@ -38,7 +38,7 @@ def nQueen(mat, r):
             mat[r][i] = '–'
 
 if __name__ == '__main__':
-    N = 8
+    N = 13
     mat = [['–' for x in range(N)] for y in range(N)]
 
     start_time = time.time()

@@ -3,7 +3,7 @@
 //we can take any number of queen , for this time we take the atmost 10 queen (grid[10][10]).
 #include<iostream>
 using namespace std;
-int grid[10][10];
+int grid[15][15];
 //print the solution
 void print(int n) {
     for (int i = 0;i <= n-1; i++) {
