@@ -1,8 +1,7 @@
 # ALGORITMOS DE ORDENAMIENTO
-##
 
+En este trabajo se busca realizar la implemetanción de algoritmos de ordenamiento como BubbleSort, TreeSort, MergeSort y el problema de N-Reinas, en diferentes lenguajes de programación como: Go, Python y C++, para poder observar así los tiempos que se obtienen durante el ordenamiento de números y la búsqueda de soluciones para el problema de N-Reinas.
 
-AED_AlgoritmosDeOrdenamiento
 
 ## Resultados obtenidos
 
