@@ -1,64 +1,49 @@
-// C++ program to implement Tree Sort
-#include<bits/stdc++.h>
-  
+//Tree Sort implemented using C++
+// Part of Cosmos by OpenGenus Foundation
+#include <iostream>
 using namespace std;
-  
-struct Node
-{
-    int key;
-    struct Node *left, *right;
+struct Node{
+  int data;
+  Node *left;
+  Node *right;
 };
-  
-// A utility function to create a new BST Node
-struct Node *newNode(int item)
+
+//Function to create new Node
+struct Node *newnode(int key)
 {
-    struct Node *temp = new Node;
-    temp->key = item;
-    temp->left = temp->right = NULL;
-    return temp;
+  struct Node *temp=new Node;
+  temp->data=key;
+  temp->left=NULL;
+  temp->right=NULL;
+  return temp;
 }
-  
-// Stores inorder traversal of the BST
-// in arr[]
-void storeSorted(Node *root, int arr[], int &i)
+
+Node* insert(Node *node,int key)
 {
-    if (root != NULL)
-    {
-        storeSorted(root->left, arr, i);
-        arr[i++] = root->key;
-        storeSorted(root->right, arr, i);
-    }
+  if(node==NULL) return newnode(key);//If tree is empty return new node
+  if(key < node->data)
+    node->left=insert(node->left,key);
+  else
+    node->right=insert(node->right,key);
+  return node;
 }
-  
-/* A utility function to insert a new
-   Node with given key in BST */
-Node* insert(Node* node, int key)
+void store(Node *root,int a[],int &i)
 {
-    /* If the tree is empty, return a new Node */
-    if (node == NULL) return newNode(key);
-  
-    /* Otherwise, recur down the tree */
-    if (key < node->key)
-        node->left  = insert(node->left, key);
-    else if (key > node->key)
-        node->right = insert(node->right, key);
-  
-    /* return the (unchanged) Node pointer */
-    return node;
+  if(root!=NULL)
+  {
+    store(root->left,a,i);
+    a[i++]=root->data;
+    store(root->right,a,i);
+  }
 }
-  
-// This function sorts arr[0..n-1] using Tree Sort
-void treeSort(int arr[], int n)
+void TreeSort(int a[], int n)
 {
     struct Node *root = NULL;
-  
-    // Construct the BST
-    root = insert(root, arr[0]);
-    for (int i=1; i<n; i++)
-        root = insert(root, arr[i]);
-  
-    // Store inorder traversal of the BST
-    // in arr[]
+    //Construct binary search tree
+    root = insert(root, a[0]);
+    for (size_t i=1; i<n; i++)
+        insert(root, a[i]);
+    //Sorting the array using inorder traversal on BST
     int i = 0;
-    storeSorted(root, arr, i);
+    store(root, a , i);
 }

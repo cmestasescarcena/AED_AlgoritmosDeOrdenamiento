@@ -12,12 +12,13 @@ import (
 
 var path = "../Data/"
 
-// var arraySizes = []int{100, 1000}
-var arraySizes = []int{100, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000, 30000, 40000, 50000}
+var arraySizes = []int{40000}
+
+// var arraySizes = []int{100, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000, 30000, 40000, 50000}
 var printA = false
-var printB = false
+var printB = true
 var printC = false
-var times = 15
+var times = 2
 
 // var timesN = 10
 var endQ = 15
@@ -73,24 +74,35 @@ func sort(_algorithm string, _size int) {
 	var durationFloat float64
 	fmt.Printf(_algorithm + " " + strconv.Itoa(times) + " times " + "size " + strconv.Itoa(_size))
 	for i := 0; i < times; i++ {
+		fmt.Print("\n")
+		fmt.Printf(_algorithm + "****************************************************************************" + strconv.Itoa(i+1) + " time ")
 		//time.Sleep(250 * time.Millisecond)
 		switch _algorithm {
 		case "BubbleSort":
 			var array = readFile(_size)
+			if printB == true {
+				fmt.Print("\n")
+				fmt.Print(array)
+			}
 			start := time.Now()
 			var newArray = BubbleSort(array)
+			duration := time.Since(start)
+			durationFloat = float64(duration.Nanoseconds()) / 1000000
+			processingTime[i] = durationFloat
 			if printB == true {
 				fmt.Print("\n")
 				fmt.Print(newArray)
 			}
-			duration := time.Since(start)
-			durationFloat = float64(duration.Nanoseconds()) / 1000000
-			processingTime[i] = durationFloat
 
 		case "TreeSort":
 			var array = readFile(_size)
+			if printB == true {
+				fmt.Print("\n")
+				fmt.Print(array)
+			}
 			start := time.Now()
 			var newArray = TreeSort(array)
+
 			if printB == true {
 				fmt.Print("\n")
 				fmt.Print(newArray)
@@ -152,10 +164,10 @@ func n_queens(_n int) {
 	}
 	fmt.Print("\n\tResult: ", processingTime)
 	fmt.Print("\n\tAverage: ")
-	fmt.Printf("%e", average(processingTime))
+	//fmt.Print("%e", average(processingTime))
 	fmt.Print("\n")
 	fmt.Print("\tStandard Deviation: ")
-	fmt.Printf("%e", standardDeviation(processingTime))
+	//fmt.Print("%e", standardDeviation(processingTime))
 	fmt.Print("\n")
 }
 
@@ -176,13 +188,13 @@ func main() {
 	*/
 
 	for i := 0; i < len(arraySizes); i++ {
-		sort("BubbleSort", arraySizes[i])
+		//sort("BubbleSort", arraySizes[i])
 		sort("TreeSort", arraySizes[i])
-		sort("MergeSort", arraySizes[i])
+		//sort("MergeSort", arraySizes[i])
 	}
 
 	for i := 4; i <= endQ; i++ {
-		n_queens(i)
+		//n_queens(i)
 	}
 
 	/*
