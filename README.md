@@ -25,3 +25,5 @@ Algoritmo merge sort
 Problema n-reinas
 
 ![App Screenshot](https://github.com/cmestasescarcena/AED_AlgoritmosDeOrdenamiento/blob/f41bf808050d1a177dbe58fa7ee5a30673c5cd01/Graphs/Graph_NQueens.jpeg)
+
+## Conclusiones
